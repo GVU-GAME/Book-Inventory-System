@@ -6,11 +6,13 @@ int main() {
         /* code */
         book inventory[20];
         int choice;
-        while(true) {
+        bool isDone = false;
+        while(!isDone) {
             cout << "1) Search for a book" << endl;
             cout << "2) Buy a book" << endl;
             cout << "3) Enter a new book" << endl;
             cout << "4) Edit a book info" << endl;
+            cout << "5) Exit" << endl;
             cout << "Choice: ";
             cin >> choice;
 
@@ -27,8 +29,14 @@ int main() {
 
             case 4:
                 break;
+
+            case 5:
+                isDone = true;
+                cout << "Exiting the program" << endl;
+                break;
             
             default:
+                cout << "Not a valid choice!" << endl;
                 break;
             }
         }
