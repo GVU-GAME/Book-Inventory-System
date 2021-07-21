@@ -1,5 +1,5 @@
-#ifndef book
-#define book
+#ifndef BOOK
+#define BOOK
 
 #include <stdlib.h>
 #include <string>
@@ -9,13 +9,7 @@ using namespace std;
 
 class book {
     public:
-        book() {
-            author = new char[20];
-            title = new char[20];
-            publisher = new char[20];
-            price = new double;
-            stock = new int;
-        }
+        book();
         char* getAuthor();
         char* getTitle();
         double getPrice();
@@ -28,4 +22,4 @@ class book {
 
 };
 
-#endif //book
+#endif //BOOK
