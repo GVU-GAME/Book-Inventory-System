@@ -10,15 +10,19 @@ using namespace std;
 class book {
     public:
         book();
+        
+        //getters
+        /*
         char* getAuthor();
         char* getTitle();
         double getPrice();
         char* getPublisher();
-        char* getStockPos();
+        int getStockPos();
+        */
     private:
-        char* author, title, publisher;
-        double price;
-        int stock;
+        char *author, *title, *publisher;
+        float *price;
+        int *stock;
 
 };
 
