@@ -3,10 +3,14 @@
 int main() {
     try
     {
-        /* code */
         book inventory[20];
-        int choice;
+
+        char bTitle[20];
+        char bAuthor[20];
+
+        int choice, invCount=0;
         bool isDone = false;
+
         while(!isDone) {
             cout << "1) Search for a book" << endl;
             cout << "2) Buy a book" << endl;
@@ -19,6 +23,26 @@ int main() {
             switch (choice)
             {
             case 1:
+                bool copyConf = false;
+
+                cout << "Enter the book title: ";
+                cin >> bTitle;
+
+                cout << "\nEnter the author of the book: ";
+                cin >> bAuthor;
+
+                for(int counter = 0; counter < invCount; counter++) {
+                    if(inventory->check(bTitle, bAuthor)) {
+                        cout << "Book found!" << endl;
+                        copyConf = true;
+                        //print book info
+                    }
+                }
+                
+                if(copyConf == false) {
+                    cout << "Unable to find" << bTitle << " by " << bAuthor << endl;
+                } 
+
                 break;
 
             case 2:

@@ -10,7 +10,7 @@ using namespace std;
 class book {
     public:
         book();
-        
+        bool check(char[], char[]);
         //getters
         /*
         char* getAuthor();

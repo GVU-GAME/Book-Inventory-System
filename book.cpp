@@ -8,3 +8,7 @@ book::book() {
     price = new float;
     stock = new int;
 }
+
+bool book::check(char title[20], char author[20]) {
+
+}
