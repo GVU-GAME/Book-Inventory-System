@@ -49,8 +49,13 @@ int main() {
                 break;
 
             case 3:
-                inventory[invCount].addBook();
-                invCount++;
+                if(invCount >= 20) {
+                    cout << "Unfortunatly our inventory is full, no further books can be added until inventory goes down" << endl;
+                } else {
+                    inventory[invCount].addBook();
+                    invCount++;
+                }
+
                 break;
 
             case 4:
