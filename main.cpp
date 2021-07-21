@@ -32,10 +32,10 @@ int main() {
                 cin >> bAuthor;
 
                 for(int counter = 0; counter < invCount; counter++) {
-                    if(inventory->check(bTitle, bAuthor)) {
+                    if(inventory[counter].check(bTitle, bAuthor)) {
                         cout << "Book found!" << endl;
                         copyConf = true;
-                        //print book info
+                        inventory[counter].showDetails();
                     }
                 }
                 

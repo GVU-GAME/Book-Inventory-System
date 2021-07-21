@@ -2,7 +2,7 @@
 #define BOOK
 
 #include <stdlib.h>
-#include <string>
+#include <cstring>
 #include <iostream>
 
 using namespace std;
@@ -11,14 +11,8 @@ class book {
     public:
         book();
         bool check(char[], char[]);
-        //getters
-        /*
-        char* getAuthor();
-        char* getTitle();
-        double getPrice();
-        char* getPublisher();
-        int getStockPos();
-        */
+        void showDetails();
+        
     private:
         char *author, *title, *publisher;
         float *price;

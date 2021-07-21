@@ -9,6 +9,18 @@ book::book() {
     stock = new int;
 }
 
-bool book::check(char title[20], char author[20]) {
+bool book::check(char bTitle[20], char bAuthor[20]) {
+    if(strcmp(title, bTitle) && strcmp(author, bAuthor)) {
+        return true;
+    }
 
+    return false;
+}
+
+void book::showDetails() {
+    cout << title << endl;
+    cout << author << endl;
+    cout << publisher << endl;
+    cout << "Amount: $" << price << endl;
+    cout << "In Stock: " << stock << endl;
 }
