@@ -25,7 +25,7 @@ int main() {
             case 1:
                 bool copyConf = false;
 
-                cout << "Enter the book title: ";
+                cout << "\nEnter the book title: ";
                 cin >> bTitle;
 
                 cout << "\nEnter the author of the book: ";
@@ -49,6 +49,8 @@ int main() {
                 break;
 
             case 3:
+                inventory[invCount].addBook();
+                invCount++;
                 break;
 
             case 4:

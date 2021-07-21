@@ -24,3 +24,20 @@ void book::showDetails() {
     cout << "Amount: $" << price << endl;
     cout << "In Stock: " << stock << endl;
 }
+
+void book::addBook() {
+    cout << "Title of Book: ";
+    cin >> title;
+
+    cout << "Author: ";
+    cin >> author;
+
+    cout << "Publisher: ";
+    cin >> publisher;
+
+    cout << "Price: ";
+    cin >> *price;
+
+    cout << "Stock: ";
+    cin >> *stock;
+}
