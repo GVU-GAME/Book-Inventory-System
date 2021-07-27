@@ -26,6 +26,8 @@ void book::showDetails() {
 }
 
 void book::addBook() {
+    cout << "Enter the: " << endl;
+    
     cout << "Title of Book: ";
     cin >> title;
 

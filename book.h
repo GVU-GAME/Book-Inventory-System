@@ -13,6 +13,7 @@ class book {
         bool check(char[], char[]);
         void showDetails();
         void addBook();
+        void editBook();
     private:
         char *author, *title, *publisher;
         float *price;

@@ -59,15 +59,32 @@ int main() {
                 break;
 
             case 4:
+                bool copyConf = false;
+                cout << "\nEnter the Title of the Book: ";
+                cin >> bTitle;
+
+                cout << "Enter the Author: ";
+                cin >> bAuthor;
+
+                for(int count = 0; count < invCount; count++) {
+                    if(inventory[count].check(bTitle, bAuthor)) {
+                        copyConf = true;
+                    }
+                }
+
+                if(copyConf == false) {
+                    cout << "This book is not in the inventory!" << endl;
+                }
+                
                 break;
 
             case 5:
                 isDone = true;
-                cout << "Exiting the program" << endl;
+                cout << "\nExiting the program" << endl;
                 break;
             
             default:
-                cout << "Not a valid choice!" << endl;
+                cout << "\nNot a valid choice!" << endl;
                 break;
             }
         }
