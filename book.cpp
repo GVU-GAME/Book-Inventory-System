@@ -27,7 +27,7 @@ void book::showDetails() {
 
 void book::addBook() {
     cout << "Enter the: " << endl;
-    
+
     cout << "Title of Book: ";
     cin >> title;
 
@@ -42,4 +42,57 @@ void book::addBook() {
 
     cout << "Stock: ";
     cin >> *stock;
+}
+
+void book::editBook() {
+    cout << "What would you like to edit?" << endl;
+    
+    bool editComp = false;
+    int ans;
+    while(!editComp) {
+        cout << "1) Title" << endl;
+        cout << "2) Author" << endl;
+        cout << "3) Publisher" << endl;
+        cout << "4) Price" << endl;
+        cout << "5) Stock" << endl;
+        cout << "6) Exit" << endl;
+        cin >> ans;
+
+        switch (ans)
+        {
+        case 1:
+            cout << "New Title: " << endl;
+            cin >> title;
+            break;
+
+        case 2:
+            cout << "New Author: " << endl;
+            cin >> author;
+            break;
+
+        case 3:
+            cout << "New Publisher: " << endl;
+            cin >> publisher;
+            break;
+
+        case 4:
+            cout << "New Price: " << endl;
+            cin >> *price;
+            break;
+
+        case 5:
+            cout << "New Stock: " << endl;
+            cin >> *stock;
+            break;
+
+        case 6:
+            cout << "Exiting!" << endl;
+            editComp = true;
+            break;
+        
+        default:
+            cout << "Not a valid choice!" << endl;
+            break;
+        }
+    }
 }

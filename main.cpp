@@ -69,6 +69,7 @@ int main() {
                 for(int count = 0; count < invCount; count++) {
                     if(inventory[count].check(bTitle, bAuthor)) {
                         copyConf = true;
+                        inventory[count].editBook();
                     }
                 }
 
