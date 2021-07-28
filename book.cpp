@@ -96,3 +96,21 @@ void book::editBook() {
         }
     }
 }
+
+int book::getStock() {
+    return *stock;
+}
+
+void book::buyBook() {
+    int copyAmount;
+    cout << "How many copies do you need? ";
+    cin >> copyAmount;
+
+    if(*stock < copyAmount) {
+        cout << "Sorry there is not enough instock" << endl;
+    } else {
+        cout << "Pleasure doing business with you!" << endl;
+        cout << "Amount: $ " << (*price * copyAmount) << endl;
+        *stock -= copyAmount;
+    }
+}

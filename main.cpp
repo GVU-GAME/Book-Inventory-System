@@ -1,14 +1,17 @@
 #include "book.h"
 
+#define MAXINV 20
+#define MAXSIZE 20
+
 int main() {
     try
     {
-        book inventory[20];
+        book inventory[MAXINV];
 
-        char bTitle[20];
-        char bAuthor[20];
+        char bTitle[MAXSIZE];
+        char bAuthor[MAXSIZE];
 
-        int choice, invCount=0;
+        int choice, invCount = 0;
         bool isDone = false;
 
         while(!isDone) {
@@ -39,23 +42,38 @@ int main() {
                     }
                 }
                 
-                if(copyConf == false) {
+                if(!copyConf) {
                     cout << "Unable to find" << bTitle << " by " << bAuthor << endl;
                 } 
-
                 break;
 
             case 2:
+                bool copyConf = false;
+
+                cout << "Title of the Book: ";
+                cin >> bTitle;
+
+                cout << "Author: ";
+                cin >> bAuthor;
+
+                for(int count = 0; count < invCount; count++) {
+                    if(inventory[count].check(bTitle, bAuthor)) {
+                        inventory[count].buyBook();
+                    }
+                }
+
+                if(!copyConf) {
+                    cout << "Unable to find" << bTitle << " by " << bAuthor << endl;
+                }
                 break;
 
             case 3:
-                if(invCount >= 20) {
+                if(invCount >= MAXINV) {
                     cout << "Unfortunatly our inventory is full, no further books can be added until inventory goes down" << endl;
                 } else {
                     inventory[invCount].addBook();
                     invCount++;
                 }
-
                 break;
 
             case 4:
@@ -73,10 +91,9 @@ int main() {
                     }
                 }
 
-                if(copyConf == false) {
+                if(!copyConf) {
                     cout << "This book is not in the inventory!" << endl;
-                }
-                
+                }              
                 break;
 
             case 5:

@@ -14,6 +14,8 @@ class book {
         void showDetails();
         void addBook();
         void editBook();
+        int getStock();
+        void buyBook();
     private:
         char *author, *title, *publisher;
         float *price;
