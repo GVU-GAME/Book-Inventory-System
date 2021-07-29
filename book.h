@@ -4,6 +4,11 @@
 #include <stdlib.h>
 #include <cstring>
 #include <iostream>
+#include <string>
+#include <Windows.h>
+
+#define MAXINV 20
+#define MAXSIZE 20
 
 using namespace std;
 

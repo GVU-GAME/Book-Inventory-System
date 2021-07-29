@@ -2,15 +2,15 @@
 
 //Constructor (allocate memory with new operator)
 book::book() {
-    author = new char[20];
-    title = new char[20];
-    publisher = new char[20];
+    author = new char[MAXSIZE];
+    title = new char[MAXSIZE];
+    publisher = new char[MAXSIZE];
     price = new float;
     stock = new int;
 }
 
-bool book::check(char bTitle[20], char bAuthor[20]) {
-    if(strcmp(title, bTitle) && strcmp(author, bAuthor)) {
+bool book::check(char bTitle[MAXSIZE], char bAuthor[MAXSIZE]) {
+    if(!strcmp(title, bTitle) && !strcmp(author, bAuthor)) {
         return true;
     }
 
@@ -21,21 +21,24 @@ void book::showDetails() {
     cout << title << endl;
     cout << author << endl;
     cout << publisher << endl;
-    cout << "Amount: $" << price << endl;
-    cout << "In Stock: " << stock << endl;
+    cout << "Amount: $" << *price << endl;
+    cout << "In Stock: " << *stock << endl;
+
+    Sleep(1000);
 }
 
 void book::addBook() {
-    cout << "Enter the: " << endl;
+    cout << "\nEnter the: " << endl;
 
     cout << "Title of Book: ";
-    cin >> title;
+    cin.ignore(256, '\n');
+    cin.getline(title, MAXSIZE);
 
     cout << "Author: ";
-    cin >> author;
+    cin.getline(author, MAXSIZE);
 
     cout << "Publisher: ";
-    cin >> publisher;
+    cin.getline(publisher, MAXSIZE);
 
     cout << "Price: ";
     cin >> *price;
@@ -45,12 +48,13 @@ void book::addBook() {
 }
 
 void book::editBook() {
-    cout << "What would you like to edit?" << endl;
+    cout << "\nWhat would you like to edit?" << endl;
     
     bool editComp = false;
-    int ans;
     while(!editComp) {
-        cout << "1) Title" << endl;
+        int ans;
+        
+        cout << "\n1) Title" << endl;
         cout << "2) Author" << endl;
         cout << "3) Publisher" << endl;
         cout << "4) Price" << endl;
@@ -58,40 +62,42 @@ void book::editBook() {
         cout << "6) Exit" << endl;
         cin >> ans;
 
+        cin.ignore(256, '\n');
         switch (ans)
         {
         case 1:
-            cout << "New Title: " << endl;
-            cin >> title;
+            cout << "New Title: ";
+            cin.getline(title, MAXSIZE);
             break;
 
         case 2:
-            cout << "New Author: " << endl;
-            cin >> author;
+            cout << "New Author: ";
+            cin.getline(author, MAXSIZE);
             break;
 
         case 3:
-            cout << "New Publisher: " << endl;
-            cin >> publisher;
+            cout << "New Publisher: ";
+            cin.getline(publisher, MAXSIZE);
             break;
 
         case 4:
-            cout << "New Price: " << endl;
+            cout << "New Price: ";
             cin >> *price;
             break;
 
         case 5:
-            cout << "New Stock: " << endl;
+            cout << "New Stock: ";
             cin >> *stock;
             break;
 
         case 6:
-            cout << "Exiting!" << endl;
+            cout << "Exiting!";
             editComp = true;
             break;
         
         default:
             cout << "Not a valid choice!" << endl;
+            editComp = true;
             break;
         }
     }

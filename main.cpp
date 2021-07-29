@@ -1,8 +1,5 @@
 #include "book.h"
 
-#define MAXINV 20
-#define MAXSIZE 20
-
 int main() {
     try
     {
@@ -11,11 +8,13 @@ int main() {
         char bTitle[MAXSIZE];
         char bAuthor[MAXSIZE];
 
-        int choice, invCount = 0;
+        int invCount = 0;
         bool isDone = false;
 
         while(!isDone) {
-            cout << "1) Search for a book" << endl;
+            int choice;
+
+            cout << "\n1) Search for a book" << endl;
             cout << "2) Buy a book" << endl;
             cout << "3) Enter a new book" << endl;
             cout << "4) Edit a book info" << endl;
@@ -23,66 +22,78 @@ int main() {
             cout << "Choice: ";
             cin >> choice;
 
-            switch (choice)
-            {
+            switch (choice) {
             case 1:
+            {
                 bool copyConf = false;
 
                 cout << "\nEnter the book title: ";
-                cin >> bTitle;
+                cin.ignore(256, '\n');
+                cin.getline(bTitle, 20);
 
-                cout << "\nEnter the author of the book: ";
-                cin >> bAuthor;
+                cout << "Enter the author of the book: ";
+                cin.getline(bAuthor, 20);
 
                 for(int counter = 0; counter < invCount; counter++) {
                     if(inventory[counter].check(bTitle, bAuthor)) {
-                        cout << "Book found!" << endl;
+                        cout << "\nBook found!" << endl;
                         copyConf = true;
                         inventory[counter].showDetails();
                     }
                 }
                 
                 if(!copyConf) {
-                    cout << "Unable to find" << bTitle << " by " << bAuthor << endl;
+                    cout << "\nUnable to find " << bTitle << " by " << bAuthor << endl;
+                    Sleep(1000);
                 } 
                 break;
+            }
 
             case 2:
+            {
                 bool copyConf = false;
 
-                cout << "Title of the Book: ";
-                cin >> bTitle;
+                cout << "\nTitle of the Book: ";
+                cin.ignore(256, '\n');
+                cin.getline(bTitle, 20);
 
                 cout << "Author: ";
-                cin >> bAuthor;
+                cin.getline(bAuthor, 20);
 
                 for(int count = 0; count < invCount; count++) {
                     if(inventory[count].check(bTitle, bAuthor)) {
+                        copyConf = true;
                         inventory[count].buyBook();
                     }
                 }
 
                 if(!copyConf) {
-                    cout << "Unable to find" << bTitle << " by " << bAuthor << endl;
+                    cout << "\nUnable to find " << bTitle << " by " << bAuthor << endl;
+                    Sleep(1000);
                 }
                 break;
+            }
 
             case 3:
+            {
                 if(invCount >= MAXINV) {
-                    cout << "Unfortunatly our inventory is full, no further books can be added until inventory goes down" << endl;
+                    cout << "\nUnfortunatly our inventory is full, no further books can be added until inventory goes down" << endl;
                 } else {
                     inventory[invCount].addBook();
                     invCount++;
                 }
                 break;
+            }
 
             case 4:
-                bool copyConf = false;
+            {
+                 bool copyConf = false;
                 cout << "\nEnter the Title of the Book: ";
-                cin >> bTitle;
+                cin.ignore(256, '\n');
+                cin.getline(bTitle, MAXSIZE);
 
                 cout << "Enter the Author: ";
-                cin >> bAuthor;
+                cin.getline(bAuthor, MAXSIZE);
 
                 for(int count = 0; count < invCount; count++) {
                     if(inventory[count].check(bTitle, bAuthor)) {
@@ -92,18 +103,25 @@ int main() {
                 }
 
                 if(!copyConf) {
-                    cout << "This book is not in the inventory!" << endl;
+                    cout << "\nThis book is not in the inventory!" << endl;
+                    Sleep(1000);
                 }              
                 break;
+            }
 
             case 5:
-                isDone = true;
-                cout << "\nExiting the program" << endl;
-                break;
+                {
+                    cout << "\nExiting the program" << endl;
+                    isDone = true;
+                    break;
+                }
             
             default:
-                cout << "\nNot a valid choice!" << endl;
-                break;
+                {
+                    cout << "\nNot a valid choice!" << endl;
+                    isDone = true;
+                    break;
+                }
             }
         }
     }
