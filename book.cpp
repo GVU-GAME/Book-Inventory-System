@@ -1,6 +1,6 @@
 #include "book.h"
 
-//Constructor (allocate memory with new operator)
+//constructor (allocate memory with new operator)
 book::book() {
     author = new char[MAXSIZE];
     title = new char[MAXSIZE];
@@ -9,6 +9,7 @@ book::book() {
     stock = new int;
 }
 
+//compares the entered title and author with the book's
 bool book::check(char bTitle[MAXSIZE], char bAuthor[MAXSIZE]) {
     if(!strcmp(title, bTitle) && !strcmp(author, bAuthor)) {
         return true;
@@ -17,6 +18,7 @@ bool book::check(char bTitle[MAXSIZE], char bAuthor[MAXSIZE]) {
     return false;
 }
 
+//displays book's details
 void book::showDetails() {
     cout << title << endl;
     cout << author << endl;
@@ -27,11 +29,14 @@ void book::showDetails() {
     Sleep(1000);
 }
 
+//adding information to book
 void book::addBook() {
     cout << "\nEnter the: " << endl;
 
-    cout << "Title of Book: ";
+    //gets cin to ignore '\n' from input
     cin.ignore(256, '\n');
+
+    cout << "Title of Book: ";
     cin.getline(title, MAXSIZE);
 
     cout << "Author: ";
@@ -47,9 +52,11 @@ void book::addBook() {
     cin >> *stock;
 }
 
+//modifies book information
 void book::editBook() {
     cout << "\nWhat would you like to edit?" << endl;
     
+    //allows selection of which element to edit
     bool editComp = false;
     while(!editComp) {
         int ans;
@@ -103,10 +110,8 @@ void book::editBook() {
     }
 }
 
-int book::getStock() {
-    return *stock;
-}
-
+//makes sure that this book can be bought
+//updates book info
 void book::buyBook() {
     int copyAmount;
     cout << "How many copies do you need? ";
