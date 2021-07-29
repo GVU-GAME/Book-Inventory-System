@@ -70,6 +70,8 @@ void book::editBook() {
         cin >> ans;
 
         cin.ignore(256, '\n');
+
+        cout << "\n";
         switch (ans)
         {
         case 1:
@@ -98,7 +100,7 @@ void book::editBook() {
             break;
 
         case 6:
-            cout << "Exiting!";
+            cout << "Exiting!" << endl;
             editComp = true;
             break;
         
